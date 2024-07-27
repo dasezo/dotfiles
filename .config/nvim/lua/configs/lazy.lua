@@ -1,7 +1,9 @@
 return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
-
+  spec = {
+    { import = "lazy.plugins.extras.coding.copiot" },
+  },
   ui = {
     icons = {
       ft = "",

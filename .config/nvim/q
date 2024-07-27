@@ -67,6 +67,7 @@ return {
         "gitignore",
         "scss",
         "sql",
+        "react",
       },
     },
     config = function(_, opts)
