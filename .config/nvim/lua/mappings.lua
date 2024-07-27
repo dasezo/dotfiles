@@ -20,4 +20,17 @@ map("n", "<C-a>", "gg<S-v>G", { desc = "Select All" })
 map("i", "<C-z>", "<ESC>ui")
 
 map("n", "<leader>l", ":Mason")
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+map("n", "zR", require("ufo").openAllFolds, { desc = "Open all folds" })
+map("n", "zM", require("ufo").closeAllFolds, { desc = "Close all folds" })
+map("n", "zK", function()
+  local winid = require("ufo").peekFoldedLinesUnderCursor(true)
+  if not winid then
+    vim.lsp.buf.hover()
+  end
+end, { desc = "LSP: Show hover documentation and folded code" })
+-- substitute mappings
+local substitute = require "substitute"
+map("n", "s", substitute.operator, { desc = "Substitute with motion" })
+map("n", "ss", substitute.line, { desc = "Substitute line" })
+map("n", "S", substitute.eol, { desc = "Substitute to end of line" })
+map("x", "s", substitute.visual, { desc = "Substitute in visual mode" })

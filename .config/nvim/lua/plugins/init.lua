@@ -85,14 +85,15 @@ return {
     event = "VeryLazy",
   },
   {
-
-    "MeanderingProgrammer/markdown.nvim",
-    main = "render-markdown",
-    opts = {},
-    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    ft = { "markdown" },
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    keys = {
+      { "<leader>mp", ":MarkdownPreview<CR>", mode = "n", desc = "Preview" },
+    },
   },
   {
     "folke/todo-comments.nvim",
@@ -128,6 +129,68 @@ return {
       opts.scroll = {
         enable = false,
       }
+    end,
+  },
+  {
+    "luukvbaal/statuscol.nvim",
+    config = function()
+      local builtin = require "statuscol.builtin"
+      require("statuscol").setup {
+        segments = {
+          { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+          { text = { " %s" }, click = "v:lua.ScSa" },
+          { text = { builtin.lnumfunc, " " }, condition = { true, builtin.not_empty }, click = "v:lua.ScLa" },
+        },
+      }
+    end,
+  },
+
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    opts = {
+      fold_virt_text_handler = require "configs.ufo",
+      provider_selector = function(bufnr, filetype, buftype)
+        return { "treesitter", "indent" }
+      end,
+    },
+  },
+  {
+    "github/copilot.vim",
+    config = false,
+    event = "VeryLazy",
+    init = function()
+      vim.keymap.set("i", "<C-a>", 'copilot#Accept("<CR>")', {
+        noremap = true,
+        silent = true,
+        expr = true,
+        replace_keycodes = false,
+      })
+
+      vim.g.copilot_no_tab_map = true
+      vim.g.copilot_assume_mapped = true
+    end,
+  },
+
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    event = "VeryLazy",
+    dependencies = { "github/copilot.vim", "nvim-lua/plenary.nvim" },
+    opts = {
+      debug = false,
+    },
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+  },
+  {
+    "gbprod/substitute.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local substitute = require "substitute"
+
+      substitute.setup()
     end,
   },
 }
