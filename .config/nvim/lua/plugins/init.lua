@@ -193,4 +193,29 @@ return {
       substitute.setup()
     end,
   },
+  {
+		"dinhhuy258/git.nvim",
+		event = "BufReadPre",
+		opts = {
+			keymaps = {
+				-- Open blame window
+				blame = "<Leader>gb",
+				-- Open file/folder in git repository
+				browse = "<Leader>go",
+			},
+		},
+	},
+  {
+    'brenoprata10/nvim-highlight-colors',
+    config = function ()       
+      require('nvim-highlight-colors').setup()
+    end
+  },{
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      { "brenoprata10/nvim-highlight-colors", config = true },
+    },
+
+  },
+
 }
