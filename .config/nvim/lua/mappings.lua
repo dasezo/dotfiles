@@ -4,7 +4,7 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+-- map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("n", "J", "7j", { desc = "Jump 5 times down faster" })
 map("n", "K", "7k", { desc = "Jump 5 times down faster" })

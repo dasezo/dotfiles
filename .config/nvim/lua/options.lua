@@ -1,6 +1,6 @@
 require "nvchad.options"
 
--- add yours here!
+-- VIM & plugins options
 
 local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
@@ -11,15 +11,15 @@ o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease
 o.foldlevelstart = 99
 o.foldenable = true
 
-
 require("nvim-highlight-colors").setup {
-  	---Highlight tailwind colors, e.g. 'bg-blue-500'
-	enable_tailwind = true,
+  ---Highlight tailwind colors, e.g. 'bg-blue-500'
+  enable_tailwind = true,
 }
 
-
-require("cmp").setup({
+require("cmp").setup {
   formatting = {
-          format = require("nvim-highlight-colors").format
-  }
-})
+    format = require("nvim-highlight-colors").format,
+  },
+}
+
+require("mini.move").setup()

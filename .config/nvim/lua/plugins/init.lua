@@ -48,6 +48,12 @@ return {
       "html",
       "vue",
     },
+    opts = {
+      -- Defaults
+      enable_close = true, -- Auto close tags
+      enable_rename = true, -- Auto rename pairs of tags
+      enable_close_on_slash = true, -- Auto close on trailing </
+    },
   },
   --
   {
@@ -81,7 +87,7 @@ return {
     end,
   },
   {
-    "IogaMaster/neocord",
+    "iogaMaster/neocord",
     event = "VeryLazy",
   },
   {
@@ -194,28 +200,41 @@ return {
     end,
   },
   {
-		"dinhhuy258/git.nvim",
-		event = "BufReadPre",
-		opts = {
-			keymaps = {
-				-- Open blame window
-				blame = "<Leader>gb",
-				-- Open file/folder in git repository
-				browse = "<Leader>go",
-			},
-		},
-	},
+    "dinhhuy258/git.nvim",
+    event = "BufReadPre",
+    opts = {
+      keymaps = {
+        -- Open blame window
+        blame = "<Leader>gb",
+        -- Open file/folder in git repository
+        browse = "<Leader>go",
+      },
+    },
+  },
   {
-    'brenoprata10/nvim-highlight-colors',
-    config = function ()       
-      require('nvim-highlight-colors').setup()
-    end
-  },{
+    "brenoprata10/nvim-highlight-colors",
+    config = function()
+      require("nvim-highlight-colors").setup()
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       { "brenoprata10/nvim-highlight-colors", config = true },
     },
-
   },
-
+  { "echasnovski/mini.move", version = "*" },
+  { "echasnovski/mini.visits", version = "*" },
+  {
+    "gen740/SmoothCursor.nvim",
+  },
+  {
+    "tpope/vim-commentary",
+  },
+  {
+    "yuezk/vim-js",
+  },
+  {
+    "maxmellon/vim-jsx-pretty",
+  },
 }
