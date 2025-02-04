@@ -1,0 +1,85 @@
+
+set scrolloff=5
+set incsearch
+set relativenumber
+set ideajoin
+set ideastatusicon=enabled
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'machakann/vim-highlightedyank'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'hsanson/vim-android-idea'
+Plug 'AlexPl292/ideaVim-sneak'
+Plug 'acejump/AceJump' " 
+
+" Basic Vim settings
+set hlsearch
+set clipboard+=unnamed
+let mapleader = " "
+
+" Editor commands
+nnoremap <Leader>f :action ReformatCode<CR>
+xnoremap J :action MoveLineDown<CR>
+xnoremap K :action MoveLineUp<CR>
+nnoremap <Leader>gh :action QuickJavaDoc<CR>
+nnoremap <Leader>gd :action GotoDeclaration<CR>
+nnoremap <Leader>gr :action FindUsages<CR>
+nnoremap <Leader>sg :action FindInPath<CR>
+nnoremap <Leader>a :action ShowIntentionActions<CR>
+nnoremap <Leader>r :action RenameElement<CR>
+nnoremap <Leader>x :action CloseContent<CR>
+nnoremap <Leader><Space> :action GotoAction<CR>
+nnoremap <Leader>c :action GotoClass<CR>
+
+" Commenting
+nnoremap <C-.> :action CommentByLineComment<CR>
+
+" Emmet
+nnoremap <C-;> :action Emmet.WrapWithAbbreviation<CR>
+nnoremap <C-t> :action Emmet.RemoveTag<CR>
+nnoremap <C-A-i> :action Emmet.BalanceInward<CR>
+nnoremap <C-A-o> :action Emmet.BalanceOutward<CR>
+
+" Additional IDE-specific mappings
+nnoremap <Tab> :action NextTab<CR>
+nnoremap <S-Tab> :action PreviousTab<CR>
+nnoremap <C-n> :action AddSelectionForNextOccurrence<CR>
+nnoremap <C-e> :if IsEditorFocused() \| :action ActivateProjectToolWindow \| else \| :action JumpToLastWindow \| endif<CR>
+
+" Normal mode mappings
+nnoremap <Leader>w :action SaveAll<CR>
+nnoremap <Leader>q :quit<CR>
+nnoremap !d :action GotoPreviousError<CR>
+nnoremap @d :action GotoNextError<CR>
+nnoremap <Leader>ca :action ShowIntentionActions<CR>
+nnoremap <Leader>p :action GotoFile<CR>
+nnoremap <Leader>t :action GotoSymbol<CR>
+nnoremap J 5j
+nnoremap K 5k
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <Leader>tt :action NewTab<CR>
+nnoremap <Leader>to :action CloseOtherTabs<CR>
+nnoremap <Leader>nh :nohl<CR>
+nnoremap <C-p> :action GotoAction<CR>
+nnoremap + <C-a>
+nnoremap - <C-x>
+nnoremap <C-k> :action MoveLineUp<CR>
+
+" Visual mode mappings
+xnoremap < <gv
+xnoremap > >gv
+xnoremap J :action MoveLineDown<CR>
+xnoremap K :action MoveLineUp<CR>
+xnoremap <Leader>c :action CommentByLineComment<CR>
+
+" Insert mode mappings
+imap jk <Esc>
+imap <C-l> <Right>
+imap <C-h> <Left>
+imap <C-j> <Down>
+imap <C-k> <Up>
