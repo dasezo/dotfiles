@@ -1,7 +1,7 @@
 
 set scrolloff=5
 set incsearch
-set relativenumber
+set relativenumber number
 set ideajoin
 set ideastatusicon=enabled
 Plug 'easymotion/vim-easymotion'
